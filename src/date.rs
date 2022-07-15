@@ -4,11 +4,11 @@ use chrono::prelude::*;
 pub struct End_Date {
     pub Month: String,
     pub Day: u32,
-    pub Year: u32,
+    pub Year: i32,
 }
 
 impl End_Date {
-    fn new(&self, month: String, day: u32, year: u32) -> End_Date {
+    fn new(month: String, day: u32, year: i32) -> End_Date {
         End_Date {
             Month: (month),
             Day: (day),
@@ -39,9 +39,5 @@ pub fn friday_of_week() -> End_Date {
         day = day - 31;
         month += 1;
     }
-    End_Date {
-        Month: month.to_string(),
-        Day: day,
-        Year: year as u32,
-    }
+    End_Date::new(month.to_string(), day, year)
 }
