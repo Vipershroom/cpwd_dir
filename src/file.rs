@@ -2,7 +2,6 @@ use fs_extra::dir::copy;
 use fs_extra::dir::CopyOptions;
 use std::error::Error;
 use std::fs;
-use std::path::PathBuf;
 
 use crate::date::EndDate;
 
