@@ -1,23 +1,27 @@
 use chrono::prelude::*;
 
-//* Get the month and friday of the current w&eek. */
-pub struct End_Date {
-    pub Month: String,
-    pub Day: u32,
-    pub Year: i32,
+//* Get the month and friday of the current week. */
+pub struct EndDate {
+    pub month: String,
+    pub day: u32,
+    pub year: i32,
 }
 
-impl End_Date {
-    fn new(month: String, day: u32, year: i32) -> End_Date {
-        End_Date {
-            Month: (month),
-            Day: (day),
-            Year: (year),
+impl EndDate {
+    fn new(month: String, day: u32, year: i32) -> EndDate {
+        EndDate {
+            month: (month),
+            day: (day),
+            year: (year),
         }
+    }
+
+    pub fn format_week(&self) -> String {
+        format!("WE_{}_{}_{}", self.month, self.day, self.year)
     }
 }
 #[allow(unused_assignments)]
-pub fn friday_of_week() -> End_Date {
+pub fn friday_of_week() -> EndDate {
     let date = Utc::now();
 
     let mut month = date.month();
@@ -33,11 +37,11 @@ pub fn friday_of_week() -> End_Date {
         "Fri" => (),
         "Sat" => day += 6,
         "Sun" => day += 5,
-        _ => todo!(),
+        _ => unreachable!(),
     }
     if day > 31 {
         day = day - 31;
         month += 1;
     }
-    End_Date::new(month.to_string(), day, year)
+    EndDate::new(month.to_string(), day, year)
 }
