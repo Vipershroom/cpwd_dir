@@ -2,6 +2,7 @@ use fs_extra::dir::copy;
 use fs_extra::dir::CopyOptions;
 use std::error::Error;
 use std::fs;
+use std::path::PathBuf;
 
 use crate::date::EndDate;
 
@@ -11,7 +12,7 @@ pub fn rename_file(date_struct: EndDate, dir: String, flag: bool) -> Result<(), 
     copy("WE_Template", &dir, &options)?;
 
     let form1 = format!("{}\\WE_Template", &dir);
-    let form2 = date_struct.format_week();
+    let form2 = format!("{}\\{}", dir, date_struct.format_week());
 
     fs::rename(form1, form2)?;
 
