@@ -40,7 +40,7 @@ pub fn friday_of_week() -> EndDate {
         _ => unreachable!(),
     }
     if day > 31 {
-        day = day - 31;
+        day -= 31;
         month += 1;
     }
     EndDate::new(month.to_string(), day, year)

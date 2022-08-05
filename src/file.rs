@@ -3,7 +3,7 @@ use fs_extra::dir::copy;
 use fs_extra::dir::CopyOptions;
 use std::error::Error;
 use std::fs;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 #[allow(unused_assignments)]
 pub fn rename_file(date_struct: EndDate, dir: PathBuf, flag: bool) -> Result<(), Box<dyn Error>> {
@@ -16,7 +16,7 @@ pub fn rename_file(date_struct: EndDate, dir: PathBuf, flag: bool) -> Result<(),
     } else {
         copy_dir.push("./templates/WE_Templater_web/");
     }
-    copy(&copy_dir, &dir, &options).unwrap();
+    copy(&copy_dir, &dir, &options)?;
 
     let copy_slice = &copy_dir.to_str().unwrap()[12..];
 
